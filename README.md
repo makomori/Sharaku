@@ -1,4 +1,4 @@
-![sharaku_header](https://github.com/makomori/Sharaku/blob/master/Sharaku_header.png)
+![sharaku_header](https://github.com/makomori/Sharaku/blob/master/sharaku_header_small.png)
 
 # Sharaku
 
