@@ -42,18 +42,18 @@ public class SHViewController: UIViewController {
         "Linear"
     ]
 
-    var filterIndex = 0
-    let context = CIContext(options: nil)
+    fileprivate var filterIndex = 0
+    fileprivate let context = CIContext(options: nil)
     @IBOutlet var imageView: UIImageView?
     @IBOutlet var collectionView: UICollectionView?
-    var image: UIImage?
-    var smallImage: UIImage?
+    fileprivate var image: UIImage?
+    fileprivate var smallImage: UIImage?
 
     public init(image: UIImage) {
         super.init(nibName: nil, bundle: nil)
         self.image = image
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -85,7 +85,6 @@ public class SHViewController: UIViewController {
             imageView?.image = image
         } else {
             filterIndex += 1
-            
         }
         if filterIndex != 0 {
             applyFilter()
@@ -148,6 +147,9 @@ public class SHViewController: UIViewController {
     }
 
     @IBAction func doneButtontapped() {
+        if let delegate = self.delegate {
+            delegate.shViewControllerImageDidFilter(image: (imageView?.image)!)
+        }
         dismiss(animated: true, completion: nil)
     }
 }
@@ -162,6 +164,12 @@ extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegat
         }
         cell.imageView.image = filteredImage
         cell.filterNameLabel.text = filterDisplayNameList[indexPath.row]
+        if #available(iOS 8.2, *) {
+            cell.filterNameLabel.font = UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightThin)
+        } else {
+            // Fallback on earlier versions
+            cell.filterNameLabel.font = UIFont.systemFont(ofSize: 17.0)
+        }
         return cell
     }
 
@@ -171,8 +179,24 @@ extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegat
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         filterIndex = indexPath.row
+
         let cell = collectionView.cellForItem(at: indexPath) as! SHCollectionViewCell
         cell.filterNameLabel.font = UIFont.boldSystemFont(ofSize: 17)
+
+        for i in 0...filterNameList.count - 1 {
+            if i != indexPath.row {
+                if let tempCell = collectionView.cellForItem(at: IndexPath(row: i, section: indexPath.section)) {
+                    let cell = tempCell as! SHCollectionViewCell
+                    if #available(iOS 8.2, *) {
+                        cell.filterNameLabel.font = UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightThin)
+                    } else {
+                        // Fallback on earlier versions
+                        cell.filterNameLabel.font = UIFont.systemFont(ofSize: 17.0)
+                    }
+                }
+            }
+        }
+
         if filterIndex != 0 {
             applyFilter()
         } else {
