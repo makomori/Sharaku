@@ -31,18 +31,23 @@ public class SHViewController: UIViewController {
     let context = CIContext(options: nil)
     @IBOutlet var imageView: UIImageView?
     @IBOutlet var collectionView: UICollectionView?
+    var image: UIImage?
+
+    public init(image: UIImage) {
+        super.init(nibName: nil, bundle: nil)
+        self.image = image
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override public func loadView() {
-//        if let path = Bundle.main.path(forResource: "Sharaku", ofType: "bundle"),
-//            let bundle = Bundle(path: path) {
-//            let nib = UINib(nibName: "SHViewController", bundle: bundle)
-//            let generatedView = nib.instantiate(withOwner: self, options: nil)
-//        } else {
-//            print("could not load the bundle")
-//        }
-
         if let view = UINib(nibName: "SHViewController", bundle: Bundle(for: self.classForCoder)).instantiate(withOwner: self, options: nil).first as? UIView {
             self.view = view
+            if let image = self.image {
+                imageView?.image = image
+            }
         }
     }
 
@@ -58,9 +63,37 @@ public class SHViewController: UIViewController {
     }
 
     @IBAction func imageViewDidSwipeLeft() {
+        if filterIndex == filterNameList.count {
+            filterIndex = 0
+        } else {
+            filterIndex += 1
+        }
+        if filterIndex != 0 {
+            applyFilter()
+        } else {
+            imageView?.image = image
+        }
     }
 
     @IBAction func imageViewDidSwipeRight() {
+        if filterIndex == 0 {
+            filterIndex = filterNameList.count - 1
+        } else {
+            filterIndex -= 1
+        }
+        if filterIndex != 0 {
+            applyFilter()
+        } else {
+            imageView?.image = image
+        }
+    }
+
+    func applyFilter() {
+        let filterName = filterNameList[filterIndex]
+        if let image = self.image {
+            let filteredImage = createFilteredImage(filterName: filterName, image: image)
+            imageView?.image = filteredImage
+        }
     }
 
     func createFilteredImage(filterName: String, image: UIImage) -> UIImage {
@@ -95,6 +128,12 @@ public class SHViewController: UIViewController {
 extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SHCollectionViewCell
+        var filteredImage = image
+        if indexPath.row != 0 {
+            filteredImage = createFilteredImage(filterName: filterNameList[indexPath.row], image: image!)
+        }
+        cell.imageView.image = filteredImage
+        cell.filterNameLabel.text = filterNameList[indexPath.row]
         return cell
     }
 
@@ -103,5 +142,11 @@ extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegat
     }
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        filterIndex = indexPath.row
+        if filterIndex != 0 {
+            applyFilter()
+        } else {
+            imageView?.image = image
+        }
     }
 }
