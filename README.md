@@ -15,7 +15,7 @@ vc.delegate = self
 self.present(vc, animated:true, completion: nil)
 ```
 
-```
+``` Swift
 extension ViewController: SHViewControllerDelegate {
     func shViewControllerImageDidFilter(image: UIImage) {
       // Filtered image will be returned here.
