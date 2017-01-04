@@ -89,6 +89,7 @@ public class SHViewController: UIViewController {
         if filterIndex != 0 {
             applyFilter()
         }
+        updateCellFont()
     }
 
     @IBAction func imageViewDidSwipeRight() {
@@ -102,6 +103,7 @@ public class SHViewController: UIViewController {
         } else {
             imageView?.image = image
         }
+        updateCellFont()
     }
 
     func applyFilter() {
@@ -162,14 +164,10 @@ extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegat
         if indexPath.row != 0 {
             filteredImage = createFilteredImage(filterName: filterNameList[indexPath.row], image: smallImage!)
         }
+
         cell.imageView.image = filteredImage
         cell.filterNameLabel.text = filterDisplayNameList[indexPath.row]
-        if #available(iOS 8.2, *) {
-            cell.filterNameLabel.font = UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightThin)
-        } else {
-            // Fallback on earlier versions
-            cell.filterNameLabel.font = UIFont.systemFont(ofSize: 17.0)
-        }
+        updateCellFont()
         return cell
     }
 
@@ -179,14 +177,26 @@ extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegat
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         filterIndex = indexPath.row
+        if filterIndex != 0 {
+            applyFilter()
+        } else {
+            imageView?.image = image
+        }
+        updateCellFont()
+    }
 
-        let cell = collectionView.cellForItem(at: indexPath) as! SHCollectionViewCell
-        cell.filterNameLabel.font = UIFont.boldSystemFont(ofSize: 17)
+    func updateCellFont() {
+        // update font of selected cell
+        if let selectedCell = collectionView?.cellForItem(at: IndexPath(row: filterIndex, section: 0)) {
+            let cell = selectedCell as! SHCollectionViewCell
+            cell.filterNameLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        }
 
         for i in 0...filterNameList.count - 1 {
-            if i != indexPath.row {
-                if let tempCell = collectionView.cellForItem(at: IndexPath(row: i, section: indexPath.section)) {
-                    let cell = tempCell as! SHCollectionViewCell
+            if i != filterIndex {
+                // update nonselected cell font
+                if let unselectedCell = collectionView?.cellForItem(at: IndexPath(row: i, section: 0)) {
+                    let cell = unselectedCell as! SHCollectionViewCell
                     if #available(iOS 8.2, *) {
                         cell.filterNameLabel.font = UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightThin)
                     } else {
@@ -195,12 +205,6 @@ extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegat
                     }
                 }
             }
-        }
-
-        if filterIndex != 0 {
-            applyFilter()
-        } else {
-            imageView?.image = image
         }
     }
 }
