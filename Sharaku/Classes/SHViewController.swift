@@ -27,11 +27,27 @@ public class SHViewController: UIViewController {
         "CILinearToSRGBToneCurve",
         "CISRGBToneCurveToLinear"
     ]
+
+    fileprivate let filterDisplayNameList = [
+        "Normal",
+        "Chrome",
+        "Fade",
+        "Instant",
+        "Mono",
+        "Noir",
+        "Process",
+        "Tonal",
+        "Transfer",
+        "Tone",
+        "Linear"
+    ]
+
     var filterIndex = 0
     let context = CIContext(options: nil)
     @IBOutlet var imageView: UIImageView?
     @IBOutlet var collectionView: UICollectionView?
     var image: UIImage?
+    var smallImage: UIImage?
 
     public init(image: UIImage) {
         super.init(nibName: nil, bundle: nil)
@@ -47,6 +63,7 @@ public class SHViewController: UIViewController {
             self.view = view
             if let image = self.image {
                 imageView?.image = image
+                smallImage = resizeImage(image: image)
             }
         }
     }
@@ -63,15 +80,15 @@ public class SHViewController: UIViewController {
     }
 
     @IBAction func imageViewDidSwipeLeft() {
-        if filterIndex == filterNameList.count {
+        if filterIndex == filterNameList.count - 1 {
             filterIndex = 0
+            imageView?.image = image
         } else {
             filterIndex += 1
+            
         }
         if filterIndex != 0 {
             applyFilter()
-        } else {
-            imageView?.image = image
         }
     }
 
@@ -116,6 +133,16 @@ public class SHViewController: UIViewController {
         return filteredImage
     }
 
+    func resizeImage(image: UIImage) -> UIImage {
+        let ratio: CGFloat = 0.3
+        let resizedSize = CGSize(width: Int(image.size.width * ratio), height: Int(image.size.height * ratio))
+        UIGraphicsBeginImageContext(resizedSize)
+        image.draw(in: CGRect(x: 0, y: 0, width: resizedSize.width, height: resizedSize.height))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resizedImage!
+    }
+
     @IBAction func closeButtonTapped() {
         dismiss(animated: true, completion: nil)
     }
@@ -125,15 +152,16 @@ public class SHViewController: UIViewController {
     }
 }
 
-extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegate
+{
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SHCollectionViewCell
-        var filteredImage = image
+        var filteredImage = smallImage
         if indexPath.row != 0 {
-            filteredImage = createFilteredImage(filterName: filterNameList[indexPath.row], image: image!)
+            filteredImage = createFilteredImage(filterName: filterNameList[indexPath.row], image: smallImage!)
         }
         cell.imageView.image = filteredImage
-        cell.filterNameLabel.text = filterNameList[indexPath.row]
+        cell.filterNameLabel.text = filterDisplayNameList[indexPath.row]
         return cell
     }
 
@@ -143,6 +171,8 @@ extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegat
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         filterIndex = indexPath.row
+        let cell = collectionView.cellForItem(at: indexPath) as! SHCollectionViewCell
+        cell.filterNameLabel.font = UIFont.boldSystemFont(ofSize: 17)
         if filterIndex != 0 {
             applyFilter()
         } else {

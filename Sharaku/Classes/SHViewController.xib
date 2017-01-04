@@ -56,11 +56,14 @@
                         <constraint firstAttribute="height" constant="64" id="tUj-Mh-dbu"/>
                     </constraints>
                 </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Szh-NV-86B">
-                    <rect key="frame" x="0.0" y="439" width="375" height="228"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Szh-NV-86B">
+                    <rect key="frame" x="0.0" y="475" width="375" height="184"/>
+                    <color key="backgroundColor" red="0.16078431372549018" green="0.16078431372549018" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="184" id="s9Z-JS-x14"/>
+                    </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A67-EE-rnS">
-                        <size key="itemSize" width="200" height="200"/>
+                        <size key="itemSize" width="120" height="164"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
@@ -82,13 +85,13 @@
                     </connections>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.16076871752738953" green="0.16079312562942505" blue="0.16076037287712097" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.16078431372549018" green="0.16078431372549018" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="dv8-Gc-a6m" firstAttribute="top" secondItem="7L6-vm-VNv" secondAttribute="bottom" id="3v2-4T-9Fk"/>
                 <constraint firstAttribute="trailing" secondItem="Szh-NV-86B" secondAttribute="trailing" id="6dB-HL-1O0"/>
                 <constraint firstItem="Szh-NV-86B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="97s-Bm-4vc"/>
-                <constraint firstAttribute="bottom" secondItem="Szh-NV-86B" secondAttribute="bottom" id="DYQ-l7-uz4"/>
-                <constraint firstItem="Szh-NV-86B" firstAttribute="top" secondItem="dv8-Gc-a6m" secondAttribute="bottom" id="FQ4-HS-XGV"/>
+                <constraint firstAttribute="bottom" secondItem="Szh-NV-86B" secondAttribute="bottom" constant="8" id="DYQ-l7-uz4"/>
+                <constraint firstItem="Szh-NV-86B" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dv8-Gc-a6m" secondAttribute="bottom" constant="8" id="FQ4-HS-XGV"/>
                 <constraint firstItem="7L6-vm-VNv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YSV-58-RHN"/>
                 <constraint firstItem="dv8-Gc-a6m" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aPm-TD-6wN"/>
                 <constraint firstAttribute="trailing" secondItem="7L6-vm-VNv" secondAttribute="trailing" id="jpy-Me-9JP"/>

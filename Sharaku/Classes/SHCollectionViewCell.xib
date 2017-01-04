@@ -13,27 +13,30 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SHCollectionViewCell" customModule="Sharaku">
-            <rect key="frame" x="0.0" y="0.0" width="155" height="197"/>
+            <rect key="frame" x="0.0" y="0.0" width="120" height="164"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fc5-Fe-Tyv">
-                    <rect key="frame" x="35" y="16" width="85" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="fc5-Fe-Tyv">
+                    <rect key="frame" x="0.0" y="8" width="120" height="28"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ge3-p7-qmc">
-                    <rect key="frame" x="0.0" y="53" width="155" height="155"/>
+                    <rect key="frame" x="0.0" y="44" width="120" height="120"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="ge3-p7-qmc" secondAttribute="height" multiplier="1:1" id="f0g-QI-jBU"/>
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="ge3-p7-qmc" firstAttribute="top" secondItem="fc5-Fe-Tyv" secondAttribute="bottom" constant="16" id="7Aa-Op-o9N"/>
+                <constraint firstAttribute="trailing" secondItem="fc5-Fe-Tyv" secondAttribute="trailing" id="5jt-aC-Aeb"/>
+                <constraint firstItem="ge3-p7-qmc" firstAttribute="top" secondItem="fc5-Fe-Tyv" secondAttribute="bottom" constant="8" id="7Aa-Op-o9N"/>
                 <constraint firstItem="ge3-p7-qmc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QfG-vU-9MO"/>
-                <constraint firstItem="fc5-Fe-Tyv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="d5t-Qt-nUk"/>
+                <constraint firstAttribute="bottom" secondItem="ge3-p7-qmc" secondAttribute="bottom" id="Rxc-Ee-WT0"/>
+                <constraint firstItem="fc5-Fe-Tyv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="c2Y-mB-d5f"/>
+                <constraint firstItem="fc5-Fe-Tyv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="d5t-Qt-nUk"/>
                 <constraint firstItem="ge3-p7-qmc" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="eHk-BV-eCj"/>
                 <constraint firstItem="fc5-Fe-Tyv" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="laj-f2-Kyc"/>
             </constraints>
@@ -43,7 +46,7 @@
                 <outlet property="filterNameLabel" destination="fc5-Fe-Tyv" id="kGb-h7-N8z"/>
                 <outlet property="imageView" destination="ge3-p7-qmc" id="zQZ-Ei-Xcd"/>
             </connections>
-            <point key="canvasLocation" x="-66.5" y="-176.5"/>
+            <point key="canvasLocation" x="-71" y="-178"/>
         </view>
     </objects>
 </document>
