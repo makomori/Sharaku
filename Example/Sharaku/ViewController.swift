@@ -24,7 +24,13 @@ class ViewController: UIViewController {
 
     @IBAction func sharakuButtonTapped(_ sender: Any) {
         let vc = SHViewController()
+        vc.delegate = self
         present(vc, animated: true, completion: nil)
     }
 }
 
+extension ViewController: SHViewControllerDelegate {
+    func shViewControllerImageDidFilter(image: UIImage) {
+
+    }
+}

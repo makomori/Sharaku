@@ -13,7 +13,7 @@ public protocol SHViewControllerDelegate {
 }
 
 public class SHViewController: UIViewController {
-    var delegate: SHViewControllerDelegate?
+    public var delegate: SHViewControllerDelegate?
     fileprivate let filterNameList = [
         "No Filter",
         "CIPhotoEffectChrome",
@@ -33,6 +33,13 @@ public class SHViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView?
 
     override public func loadView() {
+//        if let path = Bundle.main.path(forResource: "Sharaku", ofType: "bundle"),
+//            let bundle = Bundle(path: path) {
+//            let nib = UINib(nibName: "SHViewController", bundle: bundle)
+//            let generatedView = nib.instantiate(withOwner: self, options: nil)
+//        } else {
+//            print("could not load the bundle")
+//        }
 
         if let view = UINib(nibName: "SHViewController", bundle: Bundle(for: self.classForCoder)).instantiate(withOwner: self, options: nil).first as? UIView {
             self.view = view
@@ -41,7 +48,7 @@ public class SHViewController: UIViewController {
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib(nibName: "SHCollectionViewCell", bundle: nil)
+        let nib = UINib(nibName: "SHCollectionViewCell", bundle: Bundle(for: self.classForCoder))
         collectionView?.register(nib, forCellWithReuseIdentifier: "cell")
     }
 
