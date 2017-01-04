@@ -1,3 +1,5 @@
+![sharaku_header](https://github.com/makomori/Sharaku/blob/master/Sharaku_header.png)
+
 # Sharaku
 
 [![CI Status](http://img.shields.io/travis/makomori/Sharaku.svg?style=flat)](https://travis-ci.org/makomori/Sharaku)
