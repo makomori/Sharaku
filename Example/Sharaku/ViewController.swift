@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Sharaku
 
 class ViewController: UIViewController {
 
