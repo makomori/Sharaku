@@ -35,6 +35,9 @@
                             <constraint firstItem="9Pk-NC-wc6" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="ed8-Rf-Uld"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="showSharokuButton" destination="9Pk-NC-wc6" id="NWa-sW-cJL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
