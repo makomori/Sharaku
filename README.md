@@ -7,6 +7,26 @@
 [![License](https://img.shields.io/cocoapods/l/Sharaku.svg?style=flat)](http://cocoapods.org/pods/Sharaku)
 [![Platform](https://img.shields.io/cocoapods/p/Sharaku.svg?style=flat)](http://cocoapods.org/pods/Sharaku)
 
+## Usage
+``` Swift
+let imageToBeFiltered = UIImage(named: "targetImage")
+let vc = SHViewController(image: imageToBeFiltered)
+vc.delegate = self
+self.present(vc, animated:true, completion: nil)
+```
+
+```
+extension ViewController: SHViewControllerDelegate {
+    func shViewControllerImageDidFilter(image: UIImage) {
+      // Filtered image will be returned here.
+    }
+
+    func shViewControllerDidCancel() {
+      // This will be called when your cancel filtering the image.
+    }
+}
+```
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
