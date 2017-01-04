@@ -22,7 +22,8 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Pk-NC-wc6">
-                                <rect key="frame" x="138" y="318" width="98" height="30"/>
+                                <rect key="frame" x="122.5" y="315" width="129" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Show Sharaku"/>
                                 <connections>
                                     <action selector="sharakuButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="MvV-pm-ccD"/>
