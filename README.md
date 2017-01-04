@@ -8,6 +8,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/Sharaku.svg?style=flat)](http://cocoapods.org/pods/Sharaku)
 
 ## Usage
+### How to present SHViewController
 ``` Swift
 let imageToBeFiltered = UIImage(named: "targetImage")
 let vc = SHViewController(image: imageToBeFiltered)
@@ -15,6 +16,7 @@ vc.delegate = self
 self.present(vc, animated:true, completion: nil)
 ```
 
+### SHViewControllerDelegate methods
 ``` Swift
 extension ViewController: SHViewControllerDelegate {
     func shViewControllerImageDidFilter(image: UIImage) {
