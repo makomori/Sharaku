@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Sharaku'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Sharaku.'
+  s.summary          = 'Sharaku is an image filtering library like Instagram.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,15 +18,15 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+    Sharaku is an image filtering library like Instagram.
+        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/Sharaku'
+  s.homepage         = 'https://github.com/makomori/Sharaku'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'makomori' => 'makomori26@gmail.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/Sharaku.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/makomori/Sharaku.git', :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/makomori26'
 
   s.ios.deployment_target = '8.0'
 
