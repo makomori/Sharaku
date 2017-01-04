@@ -10,6 +10,7 @@ import UIKit
 
 public protocol SHViewControllerDelegate {
     func shViewControllerImageDidFilter(image: UIImage)
+    func shViewControllerDidCancel()
 }
 
 public class SHViewController: UIViewController {
@@ -145,6 +146,9 @@ public class SHViewController: UIViewController {
     }
 
     @IBAction func closeButtonTapped() {
+        if let delegate = self.delegate {
+            delegate.shViewControllerDidCancel()
+        }
         dismiss(animated: true, completion: nil)
     }
 
@@ -189,7 +193,7 @@ extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegat
         // update font of selected cell
         if let selectedCell = collectionView?.cellForItem(at: IndexPath(row: filterIndex, section: 0)) {
             let cell = selectedCell as! SHCollectionViewCell
-            cell.filterNameLabel.font = UIFont.boldSystemFont(ofSize: 17)
+            cell.filterNameLabel.font = UIFont.boldSystemFont(ofSize: 14)
         }
 
         for i in 0...filterNameList.count - 1 {
@@ -198,10 +202,10 @@ extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegat
                 if let unselectedCell = collectionView?.cellForItem(at: IndexPath(row: i, section: 0)) {
                     let cell = unselectedCell as! SHCollectionViewCell
                     if #available(iOS 8.2, *) {
-                        cell.filterNameLabel.font = UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightThin)
+                        cell.filterNameLabel.font = UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightThin)
                     } else {
                         // Fallback on earlier versions
-                        cell.filterNameLabel.font = UIFont.systemFont(ofSize: 17.0)
+                        cell.filterNameLabel.font = UIFont.systemFont(ofSize: 14.0)
                     }
                 }
             }

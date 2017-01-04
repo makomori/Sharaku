@@ -29,14 +29,22 @@
                                     <action selector="sharakuButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="MvV-pm-ccD"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Oc-bT-Sv9">
+                                <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Oc-bT-Sv9" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="5Ro-zA-Djb"/>
+                            <constraint firstItem="6Oc-bT-Sv9" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="EPX-Ee-B4o"/>
                             <constraint firstItem="9Pk-NC-wc6" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="P9h-Rr-FMw"/>
                             <constraint firstItem="9Pk-NC-wc6" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="ed8-Rf-Uld"/>
+                            <constraint firstItem="6Oc-bT-Sv9" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" id="fhP-4y-cLJ"/>
+                            <constraint firstItem="6Oc-bT-Sv9" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="stj-J1-0pM"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="6Oc-bT-Sv9" id="JIH-xZ-3Ag"/>
                         <outlet property="showSharokuButton" destination="9Pk-NC-wc6" id="NWa-sW-cJL"/>
                     </connections>
                 </viewController>

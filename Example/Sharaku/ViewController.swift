@@ -11,6 +11,7 @@ import Sharaku
 
 class ViewController: UIViewController {
 
+    @IBOutlet var imageView: UIImageView!
     @IBOutlet var showSharokuButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,10 @@ class ViewController: UIViewController {
 
 extension ViewController: SHViewControllerDelegate {
     func shViewControllerImageDidFilter(image: UIImage) {
+        imageView.image = image
+        showSharokuButton.isHidden = true
+    }
 
+    func shViewControllerDidCancel() {
     }
 }
