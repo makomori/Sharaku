@@ -23,7 +23,7 @@ extension ViewController: SHViewControllerDelegate {
     }
 
     func shViewControllerDidCancel() {
-      // This will be called when your cancel filtering the image.
+      // This will be called when you cancel filtering the image.
     }
 }
 ```
