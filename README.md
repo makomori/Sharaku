@@ -37,7 +37,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 - Swift3
-- iOS 8.3 ~
+- iOS 8.3+
 
 ## Installation
 
