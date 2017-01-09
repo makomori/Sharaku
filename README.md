@@ -47,6 +47,9 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "Sharaku"
 ```
+### Install manually
+It requires a few things. Please follow the [steps](https://github.com/makomori/Sharaku/wiki/manual_install).
+
 
 ## Author
 
