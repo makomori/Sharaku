@@ -91,6 +91,7 @@ public class SHViewController: UIViewController {
             applyFilter()
         }
         updateCellFont()
+        scrollCollectionViewToIndex(itemIndex: filterIndex)
     }
 
     @IBAction func imageViewDidSwipeRight() {
@@ -105,6 +106,7 @@ public class SHViewController: UIViewController {
             imageView?.image = image
         }
         updateCellFont()
+        scrollCollectionViewToIndex(itemIndex: filterIndex)
     }
 
     func applyFilter() {
@@ -210,5 +212,10 @@ extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegat
                 }
             }
         }
+    }
+
+    func scrollCollectionViewToIndex(itemIndex: Int) {
+        let indexPath = IndexPath(item: itemIndex, section: 0)
+        self.collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
