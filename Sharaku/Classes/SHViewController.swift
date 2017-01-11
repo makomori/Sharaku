@@ -189,6 +189,7 @@ extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegat
             imageView?.image = image
         }
         updateCellFont()
+        scrollCollectionViewToIndex(itemIndex: indexPath.item)
     }
 
     func updateCellFont() {
