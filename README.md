@@ -50,10 +50,12 @@ pod "Sharaku"
 ### Install manually
 It requires a few things. Please follow the [steps](https://github.com/makomori/Sharaku/wiki/manual_install).
 
+## Contribution
+Creating new issues for bug report, feature request and pull request is always welcome! Please feel free to contribute to Sharaku!
 
 ## Author
 
-makomori, makomori26@gmail.com
+makomori, makomori26@gmail.com, Twitter: [@makomori26](https://twitter.com/makomori26)
 
 ## License
 
