@@ -3,6 +3,7 @@
     {
       "idiom" : "universal",
       "filename" : "sample.jpg",
+      "unassigned" : true,
       "scale" : "1x"
     }
   ],
