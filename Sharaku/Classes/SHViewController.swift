@@ -13,7 +13,7 @@ public protocol SHViewControllerDelegate {
     func shViewControllerDidCancel()
 }
 
-public class SHViewController: UIViewController {
+open class SHViewController: UIViewController {
     public var delegate: SHViewControllerDelegate?
     fileprivate let filterNameList = [
         "No Filter",
@@ -59,7 +59,7 @@ public class SHViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override public func loadView() {
+    override open func loadView() {
         if let view = UINib(nibName: "SHViewController", bundle: Bundle(for: self.classForCoder)).instantiate(withOwner: self, options: nil).first as? UIView {
             self.view = view
             if let image = self.image {
@@ -69,15 +69,10 @@ public class SHViewController: UIViewController {
         }
     }
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib(nibName: "SHCollectionViewCell", bundle: Bundle(for: self.classForCoder))
         collectionView?.register(nib, forCellWithReuseIdentifier: "cell")
-    }
-
-    override public func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func imageViewDidSwipeLeft() {
