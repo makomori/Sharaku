@@ -31,6 +31,7 @@ extension UIViewController {
 }
 
 public final class ContainerViewController: UIViewController {
+    public var finished: (UIImage) -> Void = { _ in }
     private let filterViewController: SHViewController
     private let cropViewController: CropViewController
     private let containerView = UIView()
@@ -155,7 +156,20 @@ public final class ContainerViewController: UIViewController {
     }
 
     func didTapNext() {
-        print(#function)
+        func sendImageFromFilter() {
+            guard let image = filterViewController.imageView?.image else {
+                assertionFailure()
+                return
+            }
+            finished(image)
+        }
+        if cropViewController.parent == nil {
+            sendImageFromFilter()
+        } else {
+            filterViewController.image = cropViewController.croppedImage
+            sendImageFromFilter()
+        }
+        dismiss(animated: true, completion: nil)
     }
 
     func didTapBack() {
