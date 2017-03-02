@@ -47,7 +47,14 @@ public class SHViewController: UIViewController {
     fileprivate let context = CIContext(options: nil)
     @IBOutlet var imageView: UIImageView?
     @IBOutlet var collectionView: UICollectionView?
-    fileprivate var image: UIImage?
+    var image: UIImage? {
+        didSet {
+            imageView?.image = image
+            if filterIndex != 0 {
+                applyFilter()
+            }
+        }
+    }
     fileprivate var smallImage: UIImage?
 
     public init(image: UIImage) {
@@ -73,11 +80,6 @@ public class SHViewController: UIViewController {
         super.viewDidLoad()
         let nib = UINib(nibName: "SHCollectionViewCell", bundle: Bundle(for: self.classForCoder))
         collectionView?.register(nib, forCellWithReuseIdentifier: "cell")
-    }
-
-    override public func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func imageViewDidSwipeLeft() {
@@ -145,20 +147,6 @@ public class SHViewController: UIViewController {
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return resizedImage!
-    }
-
-    @IBAction func closeButtonTapped() {
-        if let delegate = self.delegate {
-            delegate.shViewControllerDidCancel()
-        }
-        dismiss(animated: true, completion: nil)
-    }
-
-    @IBAction func doneButtontapped() {
-        if let delegate = self.delegate {
-            delegate.shViewControllerImageDidFilter(image: (imageView?.image)!)
-        }
-        dismiss(animated: true, completion: nil)
     }
 }
 

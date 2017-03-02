@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,46 +20,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7L6-vm-VNv">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMQ-jD-qtt">
-                            <rect key="frame" x="329" y="24" width="30" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="Pd3-Sr-LNh"/>
-                                <constraint firstAttribute="width" secondItem="UMQ-jD-qtt" secondAttribute="height" multiplier="1:1" id="dVI-W1-c33"/>
-                            </constraints>
-                            <state key="normal" image="ic_check"/>
-                            <connections>
-                                <action selector="doneButtontapped" destination="-1" eventType="touchUpInside" id="ESb-jg-Nma"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yM-fz-Bt9">
-                            <rect key="frame" x="16" y="24" width="30" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="1yM-fz-Bt9" secondAttribute="height" multiplier="1:1" id="obz-Sr-xsZ"/>
-                            </constraints>
-                            <state key="normal" image="ic_close"/>
-                            <connections>
-                                <action selector="closeButtonTapped" destination="-1" eventType="touchUpInside" id="JN6-fw-xYX"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="UMQ-jD-qtt" secondAttribute="trailing" constant="16" id="RIk-kn-EI6"/>
-                        <constraint firstItem="1yM-fz-Bt9" firstAttribute="top" secondItem="7L6-vm-VNv" secondAttribute="top" constant="24" id="Wwo-dI-AyZ"/>
-                        <constraint firstItem="1yM-fz-Bt9" firstAttribute="height" secondItem="UMQ-jD-qtt" secondAttribute="height" id="jb8-Ru-fXU"/>
-                        <constraint firstItem="1yM-fz-Bt9" firstAttribute="leading" secondItem="7L6-vm-VNv" secondAttribute="leading" constant="16" id="p5S-tg-gjF"/>
-                        <constraint firstItem="UMQ-jD-qtt" firstAttribute="centerY" secondItem="1yM-fz-Bt9" secondAttribute="centerY" id="pSp-kH-9AJ"/>
-                        <constraint firstAttribute="height" constant="64" id="tUj-Mh-dbu"/>
-                    </constraints>
-                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Szh-NV-86B">
                     <rect key="frame" x="0.0" y="475" width="375" height="184"/>
                     <color key="backgroundColor" red="0.16078431372549018" green="0.16078431372549018" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="184" id="s9Z-JS-x14"/>
+                        <constraint firstAttribute="height" constant="184" id="QAs-Y2-ZWk"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A67-EE-rnS">
                         <size key="itemSize" width="120" height="164"/>
@@ -73,12 +37,9 @@
                         <outlet property="delegate" destination="-1" id="RKe-oF-ANw"/>
                     </connections>
                 </collectionView>
-                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dv8-Gc-a6m">
-                    <rect key="frame" x="-0.5" y="64" width="375" height="375"/>
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dv8-Gc-a6m">
+                    <rect key="frame" x="-1" y="0.0" width="375" height="475"/>
                     <gestureRecognizers/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="dv8-Gc-a6m" secondAttribute="height" multiplier="1:1" id="0eE-mX-eGX"/>
-                    </constraints>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="2ch-Qc-nFL" appends="YES" id="8T0-ai-Z7B"/>
                         <outletCollection property="gestureRecognizers" destination="as3-Bz-yWf" appends="YES" id="nw2-7e-CKb"/>
@@ -87,16 +48,13 @@
             </subviews>
             <color key="backgroundColor" red="0.16078431372549018" green="0.16078431372549018" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="dv8-Gc-a6m" firstAttribute="top" secondItem="7L6-vm-VNv" secondAttribute="bottom" id="3v2-4T-9Fk"/>
-                <constraint firstAttribute="trailing" secondItem="Szh-NV-86B" secondAttribute="trailing" id="6dB-HL-1O0"/>
-                <constraint firstItem="Szh-NV-86B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="97s-Bm-4vc"/>
-                <constraint firstAttribute="bottom" secondItem="Szh-NV-86B" secondAttribute="bottom" constant="8" id="DYQ-l7-uz4"/>
-                <constraint firstItem="Szh-NV-86B" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dv8-Gc-a6m" secondAttribute="bottom" constant="8" id="FQ4-HS-XGV"/>
-                <constraint firstItem="7L6-vm-VNv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YSV-58-RHN"/>
-                <constraint firstItem="dv8-Gc-a6m" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aPm-TD-6wN"/>
-                <constraint firstAttribute="trailing" secondItem="7L6-vm-VNv" secondAttribute="trailing" id="jpy-Me-9JP"/>
-                <constraint firstItem="7L6-vm-VNv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xGo-R8-nQH"/>
-                <constraint firstItem="dv8-Gc-a6m" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="xqH-Ml-hGB"/>
+                <constraint firstItem="Szh-NV-86B" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="63F-g0-9zm"/>
+                <constraint firstItem="Szh-NV-86B" firstAttribute="top" secondItem="dv8-Gc-a6m" secondAttribute="bottom" id="FMw-mN-ezj"/>
+                <constraint firstItem="Szh-NV-86B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Hm9-dq-XrT"/>
+                <constraint firstItem="dv8-Gc-a6m" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Jl7-t6-I3C"/>
+                <constraint firstAttribute="trailing" secondItem="dv8-Gc-a6m" secondAttribute="trailing" constant="1" id="TsZ-uO-ibh"/>
+                <constraint firstItem="dv8-Gc-a6m" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-1" id="aXK-sJ-s30"/>
+                <constraint firstAttribute="trailing" secondItem="Szh-NV-86B" secondAttribute="trailing" id="c8e-WB-nm4"/>
             </constraints>
         </view>
         <swipeGestureRecognizer direction="left" id="2ch-Qc-nFL">
@@ -110,8 +68,4 @@
             </connections>
         </swipeGestureRecognizer>
     </objects>
-    <resources>
-        <image name="ic_check" width="48" height="48"/>
-        <image name="ic_close" width="48" height="48"/>
-    </resources>
 </document>

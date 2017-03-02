@@ -25,18 +25,7 @@ class ViewController: UIViewController {
 
     @IBAction func sharakuButtonTapped(_ sender: Any) {
         let image = UIImage(named: "sample")
-        let vc = SHViewController(image: image!)
-        vc.delegate = self
+        let vc = ContainerViewController(image: image!)
         present(vc, animated: true, completion: nil)
-    }
-}
-
-extension ViewController: SHViewControllerDelegate {
-    func shViewControllerImageDidFilter(image: UIImage) {
-        imageView.image = image
-        showSharokuButton.isHidden = true
-    }
-
-    func shViewControllerDidCancel() {
     }
 }
