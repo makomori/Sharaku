@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         let vc = ContainerViewController(image: image!)
         present(vc, animated: true, completion: nil)
 
-        vc.finished = { [weak self] image in
+        vc.didFinishWithImage = { [weak self] image in
             self?.imageView.image = image
         }
     }
