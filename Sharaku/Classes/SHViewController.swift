@@ -47,7 +47,14 @@ open class SHViewController: UIViewController {
     fileprivate let context = CIContext(options: nil)
     @IBOutlet var imageView: UIImageView?
     @IBOutlet var collectionView: UICollectionView?
-    fileprivate var image: UIImage?
+    var image: UIImage? {
+        didSet {
+            imageView?.image = image
+            if filterIndex != 0 {
+                applyFilter()
+            }
+        }
+    }
     fileprivate var smallImage: UIImage?
 
     public init(image: UIImage) {
@@ -127,7 +134,7 @@ open class SHViewController: UIViewController {
         let outputCGImage = context.createCGImage((filter?.outputImage!)!, from: (filter?.outputImage!.extent)!)
 
         // 5 - convert filtered CGImage to UIImage
-        let filteredImage = UIImage(cgImage: outputCGImage!)
+        let filteredImage = UIImage(cgImage: outputCGImage!, scale: image.scale, orientation: image.imageOrientation)
 
         return filteredImage
     }
@@ -140,20 +147,6 @@ open class SHViewController: UIViewController {
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return resizedImage!
-    }
-
-    @IBAction func closeButtonTapped() {
-        if let delegate = self.delegate {
-            delegate.shViewControllerDidCancel()
-        }
-        dismiss(animated: true, completion: nil)
-    }
-
-    @IBAction func doneButtontapped() {
-        if let delegate = self.delegate {
-            delegate.shViewControllerImageDidFilter(image: (imageView?.image)!)
-        }
-        dismiss(animated: true, completion: nil)
     }
 }
 
