@@ -2,6 +2,8 @@
 
 # Sharaku
 
+# random comment
+
 [![Version](https://img.shields.io/cocoapods/v/Sharaku.svg?style=flat)](http://cocoapods.org/pods/Sharaku)
 [![License](https://img.shields.io/cocoapods/l/Sharaku.svg?style=flat)](http://cocoapods.org/pods/Sharaku)
 [![Platform](https://img.shields.io/cocoapods/p/Sharaku.svg?style=flat)](http://cocoapods.org/pods/Sharaku)
