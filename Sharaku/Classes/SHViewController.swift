@@ -8,12 +8,13 @@
 
 import UIKit
 
-public protocol SHViewControllerDelegate {
+@objc public protocol SHViewControllerDelegate {
     func shViewControllerImageDidFilter(image: UIImage)
     func shViewControllerDidCancel()
 }
 
-open class SHViewController: UIViewController {
+@objcMembers
+public class SHViewController: UIViewController {
     public var delegate: SHViewControllerDelegate?
     fileprivate let filterNameList = [
         "No Filter",
@@ -47,6 +48,8 @@ open class SHViewController: UIViewController {
     fileprivate let context = CIContext(options: nil)
     @IBOutlet var imageView: UIImageView?
     @IBOutlet var collectionView: UICollectionView?
+    @IBOutlet weak var closeButton: UIButton!
+    
     fileprivate var image: UIImage?
     fileprivate var smallImage: UIImage?
 
@@ -59,20 +62,29 @@ open class SHViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override open func loadView() {
+    override public func loadView() {
         if let view = UINib(nibName: "SHViewController", bundle: Bundle(for: self.classForCoder)).instantiate(withOwner: self, options: nil).first as? UIView {
             self.view = view
             if let image = self.image {
                 imageView?.image = image
-                smallImage = resizeImage(image: image)
+                if let resizeImage = resizeImage(image: image) {
+                    smallImage = resizeImage
+                } else {
+                    smallImage = image
+                }
             }
         }
     }
 
-    override open func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib(nibName: "SHCollectionViewCell", bundle: Bundle(for: self.classForCoder))
         collectionView?.register(nib, forCellWithReuseIdentifier: "cell")
+    }
+
+    override public func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func imageViewDidSwipeLeft() {
@@ -132,14 +144,14 @@ open class SHViewController: UIViewController {
         return filteredImage
     }
 
-    func resizeImage(image: UIImage) -> UIImage {
+    func resizeImage(image: UIImage) -> UIImage? {
         let ratio: CGFloat = 0.3
         let resizedSize = CGSize(width: Int(image.size.width * ratio), height: Int(image.size.height * ratio))
         UIGraphicsBeginImageContext(resizedSize)
         image.draw(in: CGRect(x: 0, y: 0, width: resizedSize.width, height: resizedSize.height))
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return resizedImage!
+        return resizedImage
     }
 
     @IBAction func closeButtonTapped() {
@@ -200,7 +212,7 @@ extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegat
                 if let unselectedCell = collectionView?.cellForItem(at: IndexPath(row: i, section: 0)) {
                     let cell = unselectedCell as! SHCollectionViewCell
                     if #available(iOS 8.2, *) {
-                        cell.filterNameLabel.font = UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightThin)
+                        cell.filterNameLabel.font = UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.thin)
                     } else {
                         // Fallback on earlier versions
                         cell.filterNameLabel.font = UIFont.systemFont(ofSize: 14.0)
