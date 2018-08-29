@@ -25,8 +25,7 @@ open class SHViewController: UIViewController {
         "CIPhotoEffectProcess",
         "CIPhotoEffectTonal",
         "CIPhotoEffectTransfer",
-        "CILinearToSRGBToneCurve",
-        "CISRGBToneCurveToLinear"
+        "CILinearToSRGBToneCurve"
     ]
 
     fileprivate let filterDisplayNameList = [
@@ -39,8 +38,7 @@ open class SHViewController: UIViewController {
         "Process",
         "Tonal",
         "Transfer",
-        "Tone",
-        "Linear"
+        "Tone"
     ]
 
     fileprivate var filterIndex = 0
