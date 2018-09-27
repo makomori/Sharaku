@@ -1,6 +1,6 @@
 ![sharaku_header](https://github.com/makomori/Sharaku/blob/master/sharaku_header.png)
 
-# Sharaku
+# Sharaku 【update swift 4.2 and Fix iPhoneX safe aera】
 
 [![Version](https://img.shields.io/cocoapods/v/Sharaku.svg?style=flat)](http://cocoapods.org/pods/Sharaku)
 [![License](https://img.shields.io/cocoapods/l/Sharaku.svg?style=flat)](http://cocoapods.org/pods/Sharaku)
