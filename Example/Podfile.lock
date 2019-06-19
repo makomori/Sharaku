@@ -1,5 +1,5 @@
 PODS:
-  - Sharaku (1.0.1)
+  - Sharaku (1.0.2)
 
 DEPENDENCIES:
   - Sharaku (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Sharaku: de44ee4ade4e6f4f1bcd0d86d9daaa88101c89b2
+  Sharaku: 0f058c686d6e92d9865ee85f264a817d13f68426
 
 PODFILE CHECKSUM: ef1eae032f35d1ec3a285bf6b0259e2f3f3aa7de
 
-COCOAPODS: 1.2.0.beta.3
+COCOAPODS: 1.5.3
