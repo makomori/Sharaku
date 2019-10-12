@@ -1,4 +1,4 @@
-![sharaku_header](https://github.com/makomori/Sharaku/blob/master/sharaku_header.png)
+![sharaku_header](Docs/sharaku_header.png)
 
 # Sharaku
 
@@ -33,7 +33,7 @@ extension ViewController: SHViewControllerDelegate {
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Demo video
-![Sharaku animation](https://github.com/makomori/Sharaku/blob/master/sharaku_animation.gif)
+![Sharaku animation](Docs/sharaku_animation.gif)
 
 ## Requirements
 - Swift3
@@ -47,6 +47,12 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "Sharaku"
 ```
+
+### Carthage
+```
+github "makomori/Sharaku"
+```
+
 ### Install manually
 It requires a few things. Please follow the [steps](https://github.com/makomori/Sharaku/wiki/manual_install).
 
