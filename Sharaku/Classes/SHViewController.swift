@@ -200,7 +200,7 @@ extension  SHViewController: UICollectionViewDataSource, UICollectionViewDelegat
                 if let unselectedCell = collectionView?.cellForItem(at: IndexPath(row: i, section: 0)) {
                     let cell = unselectedCell as! SHCollectionViewCell
                     if #available(iOS 8.2, *) {
-                        cell.filterNameLabel.font = UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightThin)
+                        cell.filterNameLabel.font = UIFont.systemFont(ofSize: 14.0, weight: .thin)
                     } else {
                         // Fallback on earlier versions
                         cell.filterNameLabel.font = UIFont.systemFont(ofSize: 14.0)
